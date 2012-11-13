@@ -24,64 +24,7 @@
 		</style>
 		<!-- the bootstrap responsive include must come below the body padding to override the padding when resizing to a smaller screen. -->
 		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
-		<style>
-			.sidebar-nav {
-				padding: 9px 0;
-				/* this removes the superfluous space in the navbar (came with template) */
-			}
-
-			.nav-header {
-				font-size: 16px;
-				text-transform: none;
-				color: black;
-				padding: 3px 10px;
-				/* this modifies the look of the headings in the block menu*/
-			}
-
-			.span4.item {
-				margin-left: 0;
-				/* this makes items look properly when they line wrap */
-			}
-			.promotejs {
-				padding: 5px;
-				/* the promote js graphic seems to lack its own padding.*/
-			}
-			.modal-body {
-				max-height: 410px;
-				/* this makes the scroll bar go away for the about block*/
-			}
-
-			.nav-tabs > li .close {
-				/* this fixes the close button on the tab bar */
-				margin: -2px 0 0 10px;
-				/*font-size: 18px;  use font-size to control the size of the x*/
-			}
-
-			/* Workarea */
-
-			ul.twist {
-				margin-bottom: -1px;
-				/* this brings the work area flush up against the tabbar*/
-			}
-			.workarea {
-				border: 1px solid rgb(221, 221, 221);
-				padding: 5px;
-				/* border and padding to the workare (bleow the tabbar)*/
-			}
-
-			.nav-tabs > li > a {
-				border-color: #EEE #EEE #DDD;
-				/* this shows a faded otuline around non-active tabs*/
-			}
-
-			/*We only want to hide the contents, display:none would cause thelayout to shift*/
-			#block_menu>div{
-				visibility: hidden;
-
-			}
-
-		</style>
-
+		<link rel="stylesheet" type="text/css" href="lib/ux/customizations.css">
 
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
@@ -247,18 +190,11 @@
 
 		<div class="container-fluid" data-note="Main Container">
 			<div class="row-fluid content" data-note="Main Content Area">
+				
 				<div id="block_menu" class="span3" data-note="Side Block Bar">
 					<div id="block_menu_loading" style="display:block; visibility: visible;">
 						Loading Blocks ...
 					</div>
-					<style>
-						.menu>button {
-							margin-bottom: 5px;
-						}
-						.menu {
-							text-align: center;
-						}
-					</style>
 					<script>
 						//Need a better solution here. Considering HTML5 Flexboxes
 						$(window).load(function(){
@@ -298,23 +234,15 @@
 						});
 					</script>
 
-					<div class="menu" style="padding:5px 5px 0 5px; border: 1px solid rgb(221, 221, 221); max-height: 200px; overflow-y: auto">
+					<div class="jump_menu" style="padding:5px 5px 0 5px; border: 1px solid rgb(221, 221, 221); max-height: 200px; overflow-y: auto">
+						<!-- Jump Menu buttons go here-->
 					</div>
-					<style>
-						.block_header{
-							margin: 2px;
-							padding: 2px;
-							background:#ddd;
-							border: 1px solid #ccc;
-						}
-					</style>
+
 					<div class="sb-outer" id="blocks" style="height:900px; overflow-y: auto; overflow-x: hidden; border: 1px solid rgb(221, 221, 221); margin-top:-1px;">
-						<div class="block_menu" style="height:1800px; ">
+						<div class="block_menu" style="height:1800px;">
+							<!-- Blocks go here-->
 						</div>
 					</div>
-
-
-
 
 				</div><!--/Side Block Bar-->
 
@@ -322,7 +250,7 @@
 					<div class="tab-bar">
 						<ul class="nav nav-tabs twist">
 							<li class="active">
-								<a href="javascript:;">
+								<a>
 									<button class="close" type="button">×</button> Default
 								</a>
 							</li>
@@ -339,24 +267,7 @@
 
 						</ul>
 					</div>
-					<style>
-						.workarea {
-							overflow: auto;
-						}
-						.workspace {
-							height: 100%;
-							width: 100%;
-						}
-						.scripts_workspace {
-							width: 100%;
-							height:350%;
-						}
-						/* The scripts_text_view starts hidden*/
-						.scripts_text_view {
-							display:none;
-						}
-					</style>
-					<div id="workarea" class="workarea">
+					<div id="workarea" class="workarea"> <!-- @todo need javascript UI for this section-->
 
 						<div class="workspace"  data-name="default">
 							<div class="scripts_workspace"></div>
@@ -385,56 +296,6 @@
 			1. All modals need at least one way to close them ( x or close button) both preferred
 			2. The action the user will most likely want should be at the bottom right of the modal
 			-->
-
-			<div id="about" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="aboutLabel" aria-hidden="false">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h3 id="aboutLabel">About The Waterbear Project</h3>
-				</div><!-- /.modal-header-->
-				<div class="modal-body">
-					<img class="scratchmascot pull-left" alt="Waterbear Example" src="images/waterblocks.png" />
-					<p>Waterbear is a toolkit for creating drag-and-drop programming languages, with some example languages you can play around with and learn from. The goal is to make it easy to wrap other existing languages with Waterbear blocks to create draggable, snappable syntaxes for them.</p>
-					<p>Waterbear is a toolkit for making programming more accessible and fun. Having a visual language means you don't have to focus on learning a syntax to start programming. Waterbear is good for kids, artists, and anyone who would like to make their computer do something new without having to become a "programmer" (although it could lead to that).</p>
-
-					<p>
-						<a href="http://scratch.mit.edu">
-							<img class="scratchmascot pull-right" alt="Scratch mascot" src="images/scratchcat.png" />
-						</a>Waterbear's blocks are heavily inspired by MIT's <a href="http://scratch.mit.edu/">Scratch</a> language, but the goal is not to slavishly duplicate Scratch, or to create a programming language, but to create a visual syntax tool that can be used with a variety of languages and projects, and to make it as widely available as possible. Waterbear runs in a variety of web browsers, including Mobile Safari on the iPad.
-					</p>
-
-					<p>
-						<a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" title="JavaScript Function constructor">
-							<img class="promotejs pull-left" src="http://static.jsconf.us/promotejsh.gif" alt="JavaScript Function constructor"/>
-						</a>Waterbear's system of draggable, snappable blocks are built using clean HTML5, CSS3, and Javascript. The Javascript playground for Waterbear allows you to create Waterbear scripts, see the Javascript it will generate, and run it right in the browser.
-					</p>
-
-					<p>Waterbear is pre-alpha software, very raw, and in constant flux right now.</p>
-				</div><!-- /.modal-body-->
-				<div class="modal-footer">
-					<button class="btn" data-dismiss="modal">Close</button>
-				</div><!-- /.modal-footer-->
-			</div>
-
-			<div id="credits" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="creditsLabel" aria-hidden="false">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h3 id="creditsLabel">Credits</h3>
-				</div><!-- /.modal-header-->
-				<div class="modal-body">
-					<ul>
-						<li><a href="http://livingcode.org/">Dethe Elza</a> founded the project and named it (blame him!)</li>
-						<li>Dethe's kids, for helping test so many programming environments and great critics (and for the Waterbear mascot image above)</li>
-						<li><a href="http://stretchyboy.co.uk/">Martyn Eggleton</a>, for the <a href="http://www.arduino.cc/">Arduino</a> blocks, good brainstorming, and using Waterbear to teach programming</li>
-						<li><a href="http://www.techwizworld.net/">Blake Bourque</a>, for Java blocks, troubleshooting, documentation and code contributions</li>
-						<li>Christopher de Beer, for suggestions and bug fixes</li>
-						<li>Steve Dekorte, Alex Payne, Bob Nystrom, Wolf Rentzsch, Victoria Wang, and Brian Leroux for the encouragement to make this real</li>
-						<li>Everyone who worked on <a href="http://scratch.mit.edu/">Scratch</a>, the primary source of inspiration for this project</li>
-					</ul>
-				</div><!-- /.modal-body-->
-				<div class="modal-footer">
-					<button class="btn" data-dismiss="modal">Close</button>
-				</div><!-- /.modal-footer-->
-			</div>
 
 			<div id="help" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="helpLabel" aria-hidden="false">
 				<div class="modal-header">

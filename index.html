@@ -16,45 +16,17 @@
                 padding-bottom: 40px;
             }
         </style>
-        <!-- the bootstrap responsive include must come bleow the body padding to override the padding when resizing to a smaller screen. -->
+        <!-- the bootstrap responsive include must come below the body padding to override the padding when resizing to a smaller screen. -->
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css">
+		<link rel="stylesheet" type="text/css" href="lib/ux/customizations.css">
 				
-        <style>
-            .sidebar-nav {
-                padding: 9px 0;
-                /* this removes the superfluous space in the navbar (came with template) */
-            }
-            .nav-header {
-                font-size: 16px;
-                text-transform: none;
-                color: black;
-                /* this modifies the look of the headings */
-            }
-            .nav.nav-list>li {
-                padding-left: 15px;
-                /* this tabbs in items in the sidebar nav */
-            }
-            .span4.item {
-                margin-left: 0;
-                /* this makes items look properly when they line wrap */
-            }
-            .promotejs {
-                padding: 5px;
-                /* the promote js graphic seems to lack its own padding.*/
-            }
-            .modal-body {
-                max-height: 410px;
-                /* this makes the scroll bar go away for the about block*/
-            }
-        </style>
-
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-        <!-- fav and touch icons (Not in use)-->
+        <!-- Waterbear favicon-->
         <link rel="shortcut icon" href="images/favicon.ico">
     </head>
 
@@ -96,17 +68,13 @@
                     </div>
                     <h2>Play with Waterbear:</h2>
                     <div class="row-fluid">
+						
+						<!-- @todo: generate this list from plugins.js -->
 
                         <div class="span4 item">
-                            <h3>Javascript + Canvas</h3>
-                            <p>Using Javascript and Canvas create games, interactive art and so much more... </p>
+                            <h3>Javascript</h3>
+                            <p>Using Javascript and HTML5 Canvas create games, interactive art and so much more... </p>
                             <p><a class="btn" href="ide.html?plugins=javascript|canvas">Get Started &raquo;</a></p>
-                        </div><!--/item-->
-
-                        <div class="span4 item">
-                            <h3>Javascript + Raphael</h3>
-                            <p>Using Javascript and Raphael create stunning graphics and intricate designs. </p>
-                            <p><a class="btn" href="ide.html?plugins=javascript|raphael">Get Started &raquo;</a></p>
                         </div><!--/item-->
 
                         <div class="span4 item">
@@ -229,10 +197,10 @@
                 </div><!-- /.modal-header-->
                 <div class="modal-body">
 					<div class="alert hide alert-error plugin_selection_error">
-						<button type="button" class="close" >×</button> <!--data-dismiss="alert" -->
+						<button type="button" class="close" >×</button>
 						<strong>Warning!</strong> You must select at least one plugin.
 					</div>
-					<form class="language">
+					<form class="language" data-note="Plugin/Language selector form">
 						<style>
 							.language .header{                          
 								margin: 2px;
@@ -300,50 +268,11 @@
 								<li><input type="checkbox" name="variation" value="assl"/>ASSL<small> - Aurora Sim Scripting Language</small></li>
 							</ul>
 						</div>
-						
-					</form>
+					</form> <!--/.language-->
 
                 </div><!-- /.modal-body-->
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal">Close</button>
-
-                    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(e){
-							$('.language input').change(function() {
-								
-								//set the parent radio button when a checkbox in the group is checked
-								$(this).parent().parent().siblings('div.header').find('input:radio').attr("checked", true);
-								
-								var $localchecks = $(this).parent('li').parent('ul').children('li').find('input');
-								// uncheck all checkboxes except the ones in the current language div
-								$('.modal-body .language input:checkbox').not($localchecks).attr("checked", false);
-							});
-							
-							$('.go_btn').click(function(){
-								var plugins = "";
-								$("form.language input:checked").each(function(){
-									plugins += $(this).val()+"|";
-								});
-								
-								//no plugins selected
-								if(plugins.length <= 0)
-								{
-									//alert("You must choose at least one plugin.");	
-									$(".plugin_selection_error.alert>.close").click(function(){
-										$(this).parent().hide();
-									});
-									$(".plugin_selection_error.alert").show().addClass("in");
-								}
-								else // chop off the last pipe symbol, and send the user to the IDE
-								{
-									plugins = plugins.substring(0, plugins.length-1);
-									window.location = "ide.html?plugins="+plugins;
-								}
-							});
-							
-                        });
-                    </script>
                     <button class="btn btn-success go_btn">Go</button>
                 </div><!-- /.modal-footer-->
             </div>
@@ -359,8 +288,12 @@
         <!-- Le javascript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="bootstrap/js/bootstrap-modal.js"></script>			<!--Modals-->
-		<script src="bootstrap/js/bootstrap-collapse.js"></script>		<!--Navbar collapse on mobile-->
+		<script type="text/javascript" src="lib/jquery.min.1.7.2.js"></script>
+		
+		<script type="text/javascript" src="lib/ux/pluginSelector.ux.js"></script>
+		
+        <script type="text/javascript" src="bootstrap/js/bootstrap-modal.js"></script>			<!--Modals-->
+		<script type="text/javascript" src="bootstrap/js/bootstrap-collapse.js"></script>		<!--Navbar collapse on mobile-->
 
     </body>
 </html>

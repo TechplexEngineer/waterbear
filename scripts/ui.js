@@ -179,7 +179,7 @@ function menu (title, specs, show){
 	var group = title.toLowerCase().split(/\s+/).join('_'); //add words with underscores
 
 	var button = $("<button type=\"button\" class=\"btn btn-mini\" data-name=\""+group+"\">"+title+"</button>");
-	$("#block_menu .menu").append(button); //append buttons here
+	$("#block_menu .jump_menu").append(button); //append buttons here
 
 	var innerMenu = $("#block_menu .block_menu"); //append blocks here
 
