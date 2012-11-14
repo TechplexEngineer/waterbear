@@ -1,0 +1,113 @@
+/* =============================================================================
+    Document   : customizations.css
+	Created on : Nov 12, 2012, 9:25:35 PM
+	Created By : Techplex.Engineer
+    Description:
+        Some of the vanilla bootstrap styels are a bit problemtatic with the 
+		current setup of waterbear. These make the new IDE layout look better.
+============================================================================= */ 
+
+/** ------------------------------------------------------------------------ **/
+/** Shared between ide and index **/
+/** ------------------------------------------------------------------------ **/
+.sidebar-nav {
+	padding: 9px 0;
+	/* this removes the superfluous space in the navbar (came with template) */
+}
+.nav-header {
+	font-size: 16px;
+	text-transform: none;
+	color: black;
+	padding: 3px 10px;
+	/* this modifies the look of the headings in the sidebar navigation*/
+}
+.nav.nav-list>li {
+	padding-left: 15px;
+	/* this tabbs in items in the sidebar nav */
+}
+.span4.item {
+	margin-left: 0;
+	/* this makes items look properly when they line wrap */
+}
+.promotejs {
+	padding: 5px;
+	/* the promote js graphic seems to lack its own padding.*/
+}
+
+/** ------------------------------------------------------------------------ **/
+/** ide spesific styles **/
+/** ------------------------------------------------------------------------ **/
+.nav-tabs > li .close {
+	/* this fixes the close button on the tab bar */
+	margin: -2px 0 0 10px;
+	/*font-size: 18px;  use font-size to control the size of the x*/
+}
+
+/* ---------------------- */
+/* Workarea */
+/* ---------------------- */
+
+.nav-tabs {
+	margin-bottom: -1px;
+	/* this brings the work area flush up against the tabbar*/
+}
+.workarea {
+	border: 1px solid rgb(221, 221, 221);
+	padding: 5px;
+	/* border and padding to the workarea (below the tabbar)*/
+}
+
+.nav-tabs > li > a {
+	border-color: #EEE #EEE #DDD;
+	/* this shows a faded outline around non-active tabs*/
+}
+
+/*Hide the menu when waitng for blocks to load,
+display:none would cause the layout to shift*/
+#block_menu>div{
+	visibility: hidden;
+}
+/* The scripts_text_view starts hidden*/
+.scripts_text_view {
+	display:none;
+}
+
+/* ---------------------- */
+
+.workarea {
+	overflow: auto;
+}
+.workspace {
+	height: 100%;
+	width: 100%;
+}
+.scripts_workspace {
+	width: 100%;
+	height:350%;
+}
+
+
+/* ---------------------- */
+/* Block Menu */
+/* ---------------------- */
+.block_header{
+	margin: 2px;
+	padding: 2px;
+	background:#ddd;
+	border: 1px solid #ccc;
+}
+
+/* ---------------------- */
+/* jump menu */
+/* ---------------------- */
+.jump_menu>button {
+	margin-bottom: 5px;
+	/* Need some padding between buttons */
+}
+.jump_menu {
+	text-align: center;
+	/* Center buttons */
+
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
