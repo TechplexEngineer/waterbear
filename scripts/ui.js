@@ -16,6 +16,20 @@ function tabSelect(event){
 }
 $('.tab_bar').on('click', '.chrome_tab', tabSelect);
 
+function showBlocks() {
+	$('.workspace:visible .scripts_workspace').show();
+	$('.workspace:visible .scripts_text_view').hide();
+}
+function showScript(){
+	$('.workspace:visible .scripts_text_view').show();
+	$('.workspace:visible .scripts_workspace').hide();
+	updateScriptsView();
+}
+
+
+$('.toggle_blocks').on('click', showBlocks);
+$('.toggle_scripts').on('click', showScript);
+
 // Expose this to dragging and saving functionality
 function showWorkspace(){
     $('.workspace:visible .scripts_text_view').hide();
