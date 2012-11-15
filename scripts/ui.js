@@ -1,34 +1,28 @@
 (function($){
 
+// ----------------------
 // UI Chrome Section
+// ----------------------
 
-function tabSelect(event){
-    var self = $(this);
-    $('.tab_bar .selected').removeClass('selected');
-    self.addClass('selected');
-    $('.workspace:visible > div:visible').hide();
-    if (self.is('.scripts_workspace_tab')){
-        $('.workspace:visible .scripts_workspace').show();
-    }else if (self.is('.scripts_text_view_tab')){
-        $('.workspace:visible .scripts_text_view').show();
-        updateScriptsView();
-    }
-}
-$('.tab_bar').on('click', '.chrome_tab', tabSelect);
-
+//This will show the current workspaces blocks
 function showBlocks() {
 	$('.workspace:visible .scripts_workspace').show();
 	$('.workspace:visible .scripts_text_view').hide();
 }
+$('.toggle_blocks').on('click', showBlocks);
+//This will show the current workspaces script
 function showScript(){
 	$('.workspace:visible .scripts_text_view').show();
 	$('.workspace:visible .scripts_workspace').hide();
 	updateScriptsView();
 }
 
-
-$('.toggle_blocks').on('click', showBlocks);
 $('.toggle_scripts').on('click', showScript);
+
+// ----------------------
+// Utility Section
+// ----------------------
+
 
 // Expose this to dragging and saving functionality
 function showWorkspace(){
